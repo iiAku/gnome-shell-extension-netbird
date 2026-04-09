@@ -1,0 +1,17 @@
+OS: linux/amd64
+Daemon version: 0.66.4
+CLI version: 0.66.4
+Profile: default
+Daemon status: Connecting
+Management: Connecting
+Signal: Disconnected
+Relays: 0/3 Available
+Nameservers: 0/0 Available
+FQDN:
+NetBird IP:
+Interface type:
+Quantum resistance: false
+Lazy connection: false
+SSH Server: Disabled
+Networks: -
+Peers count: 0/8 Connected

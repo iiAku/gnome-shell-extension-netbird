@@ -1,0 +1,14 @@
+/* NetBird Status — menu row styling */
+
+.netbird-status-box {
+    spacing: 8px;
+    padding: 2px 0;
+}
+
+.netbird-status-dot {
+    margin-right: 4px;
+}
+
+.netbird-status-label {
+    font-weight: 500;
+}

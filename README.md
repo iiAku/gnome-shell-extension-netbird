@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/iiaku/gnome-shell-extension-netbird/actions/workflows/ci.yml"><img src="https://github.com/iiaku/gnome-shell-extension-netbird/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/iiAku/gnome-shell-extension-netbird/actions/workflows/ci.yml"><img src="https://github.com/iiAku/gnome-shell-extension-netbird/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <img src="https://img.shields.io/badge/GNOME_Shell-46--49-blue" alt="GNOME Shell 46-49">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License"></a>
 </p>
@@ -53,26 +53,28 @@ Install directly from the [GNOME Extensions](https://extensions.gnome.org/) mark
 
 ### From zip
 
-Download the latest `.shell-extension.zip` from [Releases](https://github.com/iiaku/gnome-shell-extension-netbird/releases), then:
+Download the latest `.shell-extension.zip` from [Releases](https://github.com/iiAku/gnome-shell-extension-netbird/releases), then:
 
 ```bash
-gnome-extensions install netbird-status@iiaku.shell-extension.zip
+gnome-extensions install "netbird-status@iiaku.shell-extension.zip"
 gnome-extensions enable netbird-status@iiaku
 ```
 
-Log out and back in to activate.
+Log out and back in (Wayland) or press `Alt+F2` > `r` > Enter (X11) to activate.
 
 ### From source
 
+Requires [Bun](https://bun.sh), `glib-compile-schemas`, `jq`, and `zip`.
+
 ```bash
-git clone https://github.com/iiaku/gnome-shell-extension-netbird.git
+git clone https://github.com/iiAku/gnome-shell-extension-netbird.git
 cd gnome-shell-extension-netbird
 bun install
 make install
 make enable
 ```
 
-Then log out and back in (Wayland) or press `Alt+F2` > `r` > Enter (X11).
+Log out and back in (Wayland) or press `Alt+F2` > `r` > Enter (X11) to activate.
 
 ## Configuration
 
@@ -126,11 +128,11 @@ ls -l /var/run/netbird.sock
 
 ### SSO browser never opens
 
-Run `netbird up` directly from a terminal. The extension parses the first `http://` or `https://` URL from stdout/stderr. If your identity provider embeds the URL differently, please [file an issue](https://github.com/iiaku/gnome-shell-extension-netbird/issues/new?template=bug_report.yml).
+Run `netbird up` directly from a terminal. The extension parses the first `http://` or `https://` URL from stdout/stderr. If your identity provider embeds the URL differently, please [file an issue](https://github.com/iiAku/gnome-shell-extension-netbird/issues/new?template=bug_report.yml).
 
 ### Reporting errors
 
-When an error occurs, the extension automatically copies a detailed error report to your clipboard. Paste it directly into a [GitHub issue](https://github.com/iiaku/gnome-shell-extension-netbird/issues/new?template=bug_report.yml) — it includes your extension version, daemon version, GNOME Shell version, OS, session type, and stack trace.
+When an error occurs, the extension automatically copies a detailed error report to your clipboard. Paste it directly into a [GitHub issue](https://github.com/iiAku/gnome-shell-extension-netbird/issues/new?template=bug_report.yml) — it includes your extension version, daemon version, GNOME Shell version, OS, session type, and stack trace.
 
 ## Development
 

@@ -1,0 +1,29 @@
+node_modules/
+dist/
+schemas/gschemas.compiled
+*.shell-extension.zip
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Package managers
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+# bun lockfile IS committed
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*~
+*.kate-swp
+
+# Env / secrets
+.env
+.env.*
+
+# Lefthook
+.lefthook-local.yml

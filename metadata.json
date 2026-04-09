@@ -1,0 +1,15 @@
+{
+  "uuid": "netbird-status@iiaku",
+  "name": "NetBird Status (Unofficial)",
+  "description": "Unofficial NetBird panel indicator for GNOME Shell. Shows connection state with a colored status dot, one-click connect/disconnect, self-hosted URL support, and quick access to common `netbird up` flags. Not affiliated with NetBird GmbH.",
+  "shell-version": [
+    "46",
+    "47",
+    "48",
+    "49"
+  ],
+  "version": 1,
+  "url": "https://github.com/iiAku/gnome-shell-extension-netbird",
+  "settings-schema": "org.gnome.shell.extensions.netbird-status",
+  "gettext-domain": "netbird-status"
+}

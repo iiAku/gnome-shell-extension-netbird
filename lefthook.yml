@@ -1,0 +1,23 @@
+# https://github.com/evilmartians/lefthook
+
+pre-commit:
+  parallel: true
+  commands:
+    lint:
+      glob: "{src,test}/**/*.{ts,js}"
+      run: ./node_modules/.bin/oxlint {staged_files}
+    format:
+      glob: "{src,test}/**/*.{ts,js,json}"
+      run: ./node_modules/.bin/oxfmt --check --no-error-on-unmatched-pattern {staged_files}
+    typecheck:
+      run: bun run typecheck
+
+pre-push:
+  parallel: true
+  commands:
+    build:
+      run: bun run build
+    test:
+      run: bun run test
+    knip:
+      run: bun run knip

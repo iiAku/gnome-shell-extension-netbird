@@ -1,0 +1,16 @@
+OS: linux/amd64
+Daemon version: 0.66.4
+CLI version: 0.66.4
+Profile: default
+Management: Connected
+Signal: Connected
+Relays: 2/3 Available
+Nameservers: 0/0 Available
+FQDN: my-machine.netbird.example.com
+NetBird IP: 100.64.0.1/16
+Interface type: Kernel
+Quantum resistance: false
+Lazy connection: false
+SSH Server: Disabled
+Networks: -
+Peers count: 6/8 Connected

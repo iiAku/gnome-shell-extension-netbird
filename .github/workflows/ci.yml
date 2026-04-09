@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install system deps (glib-compile-schemas, zip)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libglib2.0-bin zip jq
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install deps
+        run: bun install --frozen-lockfile
+
+      - name: Lint
+        run: bun run lint
+
+      - name: Format check
+        run: bun run format:check
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Test
+        run: bun run test
+
+      - name: Build
+        run: bun run build
+
+      - name: Knip
+        run: bun run knip
+
+      - name: Compile schemas
+        run: glib-compile-schemas schemas/
+
+      - name: Pack extension
+        run: make pack
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: netbird-status-extension
+          path: netbird-status@iiaku.shell-extension.zip
+          retention-days: 14

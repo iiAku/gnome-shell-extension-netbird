@@ -1,0 +1,44 @@
+{
+  "name": "gnome-shell-extension-netbird-status",
+  "version": "1.0.0",
+  "author": "Yoann Gendrey (iiAku)",
+  "devDependencies": {
+    "@evilmartians/lefthook": "^2.1.4",
+    "@girs/adw-1": "1.9.0-4.0.0-beta.38",
+    "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+    "@girs/gjs": "4.0.0-beta.38",
+    "@girs/gnome-shell": "49.1.0",
+    "@girs/gtk-4.0": "4.20.1-4.0.0-beta.38",
+    "@types/bun": "^1.3.11",
+    "knip": "^6.3.0",
+    "oxfmt": "^0.42.0",
+    "oxlint": "^1.57.0",
+    "typescript": "^5.6.0"
+  },
+  "description": "Unofficial NetBird panel indicator for GNOME Shell",
+  "license": "MIT",
+  "overrides": {
+    "@girs/gio-2.0": "2.86.0-4.0.0-beta.38",
+    "@girs/glib-2.0": "2.86.0-4.0.0-beta.38",
+    "@girs/gobject-2.0": "2.86.0-4.0.0-beta.38",
+    "@girs/gtk-4.0": "4.20.1-4.0.0-beta.38",
+    "@girs/gjs": "4.0.0-beta.38",
+    "@girs/adw-1": "1.9.0-4.0.0-beta.38"
+  },
+  "private": true,
+  "scripts": {
+    "build": "bun run build:bundle",
+    "build:bundle": "bun build src/extension.ts --outdir=dist --format=esm --target=browser --external='gi://*' --external='resource://*' && bun build src/prefs.ts --outdir=dist --format=esm --target=browser --external='gi://*' --external='resource://*'",
+    "clean": "rm -rf dist schemas/gschemas.compiled *.shell-extension.zip",
+    "typecheck": "tsc -p tsconfig.extension.json && tsc -p tsconfig.prefs.json && tsc -p tsconfig.test.json",
+    "lint": "oxlint src test",
+    "lint:fix": "oxlint --fix src test",
+    "format": "oxfmt --write src test",
+    "format:check": "oxfmt --check src test",
+    "test": "bun test test/unit",
+    "test:watch": "bun test --watch test/unit",
+    "knip": "knip",
+    "prepare": "[ -n \"$CI\" ] || git rev-parse --git-dir >/dev/null 2>&1 && lefthook install || true"
+  },
+  "type": "module"
+}

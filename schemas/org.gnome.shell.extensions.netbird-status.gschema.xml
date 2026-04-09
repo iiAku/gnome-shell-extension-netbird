@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist>
+  <schema id="org.gnome.shell.extensions.netbird-status" path="/org/gnome/shell/extensions/netbird-status/">
+    <key name="netbird-url" type="s">
+      <default>"https://api.netbird.io:443"</default>
+      <summary>NetBird URL</summary>
+      <description>Management and admin URL for NetBird. Used as both --management-url and --admin-url when invoking the netbird CLI.</description>
+    </key>
+    <key name="daemon-addr" type="s">
+      <default>"unix:///var/run/netbird.sock"</default>
+      <summary>Daemon address</summary>
+      <description>NetBird daemon socket address (unix:///path or tcp://host:port).</description>
+    </key>
+    <key name="poll-interval" type="u">
+      <default>60</default>
+      <range min="3" max="300"/>
+      <summary>Status poll interval (seconds)</summary>
+      <description>Safety-net poll for NetBird status. The extension already reacts instantly to WireGuard interface changes (sysfs inotify) and refreshes on menu open, so this can safely be long.</description>
+    </key>
+    <key name="connect-on-startup" type="b">
+      <default>false</default>
+      <summary>Connect on startup</summary>
+      <description>Automatically run `netbird up` when the extension starts.</description>
+    </key>
+    <key name="show-notifications" type="b">
+      <default>true</default>
+      <summary>Show notifications</summary>
+      <description>Show desktop notifications for errors and SSO login prompts.</description>
+    </key>
+    <key name="allow-ssh" type="b">
+      <default>false</default>
+      <summary>Allow SSH server</summary>
+      <description>Pass --allow-server-ssh to `netbird up`. Toggling while connected triggers an automatic reconnect.</description>
+    </key>
+    <key name="enable-rosenpass" type="b">
+      <default>false</default>
+      <summary>Enable Quantum-Resistance (Rosenpass)</summary>
+      <description>Pass --enable-rosenpass to `netbird up`. Post-quantum key exchange (experimental). Toggling while connected triggers an automatic reconnect.</description>
+    </key>
+    <key name="enable-lazy-connection" type="b">
+      <default>false</default>
+      <summary>Enable Lazy Connections</summary>
+      <description>Pass --enable-lazy-connection to `netbird up`. Establish peer connections on-demand (experimental). Toggling while connected triggers an automatic reconnect.</description>
+    </key>
+    <key name="block-inbound" type="b">
+      <default>false</default>
+      <summary>Block Inbound Connections</summary>
+      <description>Pass --block-inbound to `netbird up`. Disallow inbound connections to the local machine and routed networks. Toggling while connected triggers an automatic reconnect.</description>
+    </key>
+  </schema>
+</schemalist>

@@ -1,0 +1,16 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "types": [
+      "@girs/gnome-shell/extensions/prefs/ambient",
+      "@girs/gtk-4.0/ambient",
+      "@girs/adw-1/ambient",
+      "@girs/gio-2.0/ambient"
+    ]
+  },
+  "include": [
+    "src/prefs.ts",
+    "src/lib/settings.ts"
+  ]
+}

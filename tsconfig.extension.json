@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "types": [
+      "@girs/gnome-shell/ambient",
+      "@girs/gnome-shell/extensions/ambient",
+      "@girs/gnome-shell/extensions/global",
+      "@girs/gjs/dom"
+    ]
+  },
+  "include": ["src/extension.ts", "src/lib/**/*.ts"],
+  "exclude": ["src/prefs.ts"]
+}

@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "rootDir": ".",
+    "types": ["bun"],
+    "moduleResolution": "bundler",
+    "module": "ESNext",
+    "allowImportingTsExtensions": true
+  },
+  "include": ["test/**/*.ts", "src/lib/**/*.ts"],
+  "exclude": ["src/extension.ts", "src/prefs.ts", "src/lib/indicator.ts", "src/lib/netbird-client.ts"]
+}

@@ -1,0 +1,10 @@
+OS: linux/amd64
+Daemon version: 0.66.4
+CLI version: 0.66.4
+Profile: default
+Daemon status: NeedsLogin
+
+It seems that no session was found. Please do the SSO login in your browser.
+If your browser didn't open automatically, use this URL to log in:
+
+https://auth.example.com/realms/netbird/protocol/openid-connect/auth?client_id=netbird-cli&code_challenge=abcdef&code_challenge_method=S256&redirect_uri=http%3A%2F%2Flocalhost%3A53000&response_type=code&scope=openid%20profile%20email%20offline_access

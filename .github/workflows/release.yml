@@ -1,0 +1,71 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Install system deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libglib2.0-bin zip jq
+
+      - name: Fetch tags
+        run: git fetch --tags
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install deps
+        run: bun install --frozen-lockfile
+
+      - name: Lint
+        run: bun run lint
+
+      - name: Format check
+        run: bun run format:check
+
+      - name: Typecheck
+        run: bun run typecheck
+
+      - name: Test
+        run: bun run test
+
+      - name: Build
+        run: bun run build
+
+      - name: Knip
+        run: bun run knip
+
+      - name: Compile schemas
+        run: glib-compile-schemas schemas/
+
+      - name: Pack extension
+        run: make pack
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: netbird-status@iiaku.shell-extension.zip
+          generate_release_notes: true
+
+      - name: Publish to GNOME Extensions
+        if: vars.EGO_PUBLISH == 'true'
+        env:
+          EGO_TOKEN: ${{ secrets.EGO_TOKEN }}
+        run: |
+          curl -s -f \
+            -H "Authorization: Bearer $EGO_TOKEN" \
+            -F "source=@netbird-status@iiaku.shell-extension.zip" \
+            -F "shell_extension_uuid=netbird-status@iiaku" \
+            https://extensions.gnome.org/api/v1/extensions
