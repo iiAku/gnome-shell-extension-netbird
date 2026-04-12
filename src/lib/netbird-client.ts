@@ -75,7 +75,7 @@ const runProcess = (argv: readonly string[], opts: RunOptions = {}): Promise<Com
                 proc.force_exit();
             } catch (e) {
                 const msg = e instanceof Error ? e.message : String(e);
-                console.warn(`${ExtensionLogPrefix} force_exit (cancel) failed: ${msg}`);
+                console.debug(`${ExtensionLogPrefix} force_exit (cancel) failed: ${msg}`);
             }
         });
 
@@ -105,7 +105,7 @@ const runProcess = (argv: readonly string[], opts: RunOptions = {}): Promise<Com
                 // BOUNDARY: force_exit can race with communicate_utf8_finish on
                 // fast subprocesses. Non-fatal but worth logging.
                 const msg = e instanceof Error ? e.message : String(e);
-                console.warn(`${ExtensionLogPrefix} force_exit failed: ${msg}`);
+                console.debug(`${ExtensionLogPrefix} force_exit failed: ${msg}`);
             }
             timeoutId = null;
             return GLib.SOURCE_REMOVE;

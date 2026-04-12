@@ -307,7 +307,7 @@ class NetbirdIndicatorClass extends PanelMenu.Button {
             // kernel, container without /sys/class/net, etc.), fall back to
             // periodic polling only.
             const msg = e instanceof Error ? e.message : String(e);
-            console.warn(`${ExtensionLogPrefix} interface monitor unavailable: ${msg}`);
+            console.debug(`${ExtensionLogPrefix} interface monitor unavailable: ${msg}`);
         }
     }
 
@@ -419,7 +419,7 @@ class NetbirdIndicatorClass extends PanelMenu.Button {
             }
         } catch (e) {
             const msg = e instanceof Error ? e.message : String(e);
-            console.warn(`${ExtensionLogPrefix} version lookup failed: ${msg}`);
+            console.debug(`${ExtensionLogPrefix} version lookup failed: ${msg}`);
         }
     }
 
@@ -473,7 +473,7 @@ class NetbirdIndicatorClass extends PanelMenu.Button {
             if (this._aborted) {
                 // Aborted by the user (re-click) — swallow; the restart path
                 // will run a fresh attempt.
-                console.info(`${ExtensionLogPrefix} connect aborted by user`);
+                console.debug(`${ExtensionLogPrefix} connect aborted by user`);
             } else {
                 this._handleToggleError(e, true);
             }
@@ -523,7 +523,7 @@ class NetbirdIndicatorClass extends PanelMenu.Button {
             try {
                 await this._client.up(this._options());
             } catch {
-                console.warn(`${ExtensionLogPrefix} reconnect: up failed, retrying once`);
+                console.debug(`${ExtensionLogPrefix} reconnect: up failed, retrying once`);
                 await this._client.up(this._options());
             }
         } catch (e) {
@@ -554,7 +554,7 @@ class NetbirdIndicatorClass extends PanelMenu.Button {
             this._copyToClipboard(report);
         } catch (e) {
             const msg = e instanceof Error ? e.message : String(e);
-            console.warn(`${ExtensionLogPrefix} failed to copy error report: ${msg}`);
+            console.debug(`${ExtensionLogPrefix} failed to copy error report: ${msg}`);
         }
     }
 
@@ -642,7 +642,7 @@ class NetbirdIndicatorClass extends PanelMenu.Button {
                 await this._client.down(this._options());
             } catch (e) {
                 const msg = e instanceof Error ? e.message : String(e);
-                console.warn(`${ExtensionLogPrefix} quit: down failed: ${msg}`);
+                console.debug(`${ExtensionLogPrefix} quit: down failed: ${msg}`);
             }
         }
         if (this._destroyed) return;

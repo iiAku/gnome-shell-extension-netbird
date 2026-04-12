@@ -41,7 +41,8 @@ install: build schemas
 	@mkdir -p $(INSTALL_DIR)/schemas $(INSTALL_DIR)/icons
 	@jq '.version = $(VERSION)' metadata.json > $(INSTALL_DIR)/metadata.json
 	@cp stylesheet.css $(INSTALL_DIR)/
-	@cp schemas/*.xml schemas/gschemas.compiled $(INSTALL_DIR)/schemas/
+	@cp schemas/*.xml $(INSTALL_DIR)/schemas/
+	@glib-compile-schemas $(INSTALL_DIR)/schemas/
 	@cp icons/*.svg $(INSTALL_DIR)/icons/
 	@echo "==> Installed. Now: make enable && log out/in (Wayland) or Alt+F2 r (X11)"
 
@@ -67,7 +68,7 @@ pack: build schemas
 	@cp dist/extension.js dist/prefs.js /tmp/$(UUID)-pack/
 	@jq '.version = $(VERSION)' metadata.json > /tmp/$(UUID)-pack/metadata.json
 	@cp stylesheet.css /tmp/$(UUID)-pack/
-	@cp schemas/*.xml schemas/gschemas.compiled /tmp/$(UUID)-pack/schemas/
+	@cp schemas/*.xml /tmp/$(UUID)-pack/schemas/
 	@cp icons/*.svg /tmp/$(UUID)-pack/icons/
 	@(cd /tmp/$(UUID)-pack && zip -rq $(CURDIR)/$(UUID).shell-extension.zip .)
 	@rm -rf /tmp/$(UUID)-pack
