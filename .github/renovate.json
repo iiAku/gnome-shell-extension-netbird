@@ -1,0 +1,48 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    ":semanticCommits",
+    "helpers:pinGitHubActionDigestsToSemver"
+  ],
+  "schedule": ["before 9am on monday"],
+  "timezone": "Europe/Paris",
+  "labels": ["dependencies"],
+  "rangeStrategy": "bump",
+  "packageRules": [
+    {
+      "description": "Group all @girs/* type definitions — they must be bumped in lockstep with @girs/gnome-shell",
+      "matchPackageNames": ["@girs/**"],
+      "groupName": "girs type definitions"
+    },
+    {
+      "description": "Major @girs/gnome-shell bumps require manual review (must also add the new shell-version to metadata.json and re-test)",
+      "matchPackageNames": ["@girs/gnome-shell"],
+      "matchUpdateTypes": ["major"],
+      "addLabels": ["needs-manual-review"],
+      "automerge": false
+    },
+    {
+      "description": "Group GitHub Actions and auto-merge minor/patch",
+      "matchManagers": ["github-actions"],
+      "groupName": "github actions",
+      "matchUpdateTypes": ["minor", "patch", "digest"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "description": "Auto-merge dev tooling patch & minor — CI gates correctness",
+      "matchPackageNames": [
+        "oxlint",
+        "oxfmt",
+        "knip",
+        "@evilmartians/lefthook",
+        "typescript",
+        "@types/bun"
+      ],
+      "matchUpdateTypes": ["patch", "minor"],
+      "automerge": true,
+      "automergeType": "branch"
+    }
+  ]
+}
