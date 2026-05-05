@@ -134,7 +134,7 @@ class NetbirdIndicatorClass extends PanelMenu.Button {
             y_align: Clutter.ActorAlign.CENTER,
         });
         const statusBox = new St.BoxLayout({
-            vertical: false,
+            orientation: Clutter.Orientation.HORIZONTAL,
             x_expand: true,
             style_class: "netbird-status-box",
         });

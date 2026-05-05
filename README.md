@@ -11,7 +11,7 @@
 
 <p align="center">
   <a href="https://github.com/iiAku/gnome-shell-extension-netbird/actions/workflows/ci.yml"><img src="https://github.com/iiAku/gnome-shell-extension-netbird/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
-  <img src="https://img.shields.io/badge/GNOME_Shell-46--49-blue" alt="GNOME Shell 46-49">
+  <img src="https://img.shields.io/badge/GNOME_Shell-46--50-blue" alt="GNOME Shell 46-50">
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-green" alt="MIT License"></a>
 </p>
 

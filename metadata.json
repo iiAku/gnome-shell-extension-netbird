@@ -6,9 +6,10 @@
     "46",
     "47",
     "48",
-    "49"
+    "49",
+    "50"
   ],
-  "version": 1,
+  "version": 2,
   "url": "https://github.com/iiAku/gnome-shell-extension-netbird",
   "settings-schema": "org.gnome.shell.extensions.netbird-status",
   "gettext-domain": "netbird-status"
